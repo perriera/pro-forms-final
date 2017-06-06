@@ -24,12 +24,6 @@ export class HeaderComponent {
   }
 
   onFetchData() {
-    this.dataStorageService.fetchRecipes()
-      .subscribe(
-        (response: Recipe[]) => {
-          this.recipesService.setRecipes(response);
-          console.log((response));
-        }
-      );
+    this.dataStorageService.fetchRecipes();
   }
 }

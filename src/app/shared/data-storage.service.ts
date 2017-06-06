@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { RecipeService } from '../recipes/recipe.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { Recipe } from '../recipes/recipe.model';
 
 @Injectable()
 export class DataStorageService {
@@ -18,20 +19,11 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    return this.http.get(this.recipesUrl)
-      .map(
+    this.http.get(this.recipesUrl)
+      .subscribe(
         (response: Response) => {
-          const data = response.json();
-          // console.log(data);
-          // for (const server of data) {
-          //   server.name = 'FETCHED_' + server.name;
-          // }
-          return data;
-        }
-      ).catch(
-        (error: Response) => {
-          console.log(error);
-          return Observable.throw('Something went wrong');
+          const recipes: Recipe[] = response.json();
+          this.recipeService.setRecipes(recipes);
         }
       );
   }
