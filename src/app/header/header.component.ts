@@ -10,6 +10,8 @@ import { Recipe } from '../recipes/recipe.model';
 })
 export class HeaderComponent {
 
+  loggedIn = false;
+
   constructor(private dataStorageService: DataStorageService,
               private recipesService: RecipeService) {
   }
