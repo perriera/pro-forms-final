@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +19,7 @@ export class AppComponent implements  OnInit {
       apiKey: 'AIzaSyB_R9Tj5hXMTnhOVQwZJ7xnBzcMzMIVZIg',
       authDomain: 'ng-recipe-book-2ab4d.firebaseapp.com'
     });
+
   }
 
 }
