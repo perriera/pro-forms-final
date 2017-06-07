@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-signup',
@@ -9,6 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class SignupComponent implements OnInit {
 
+  success = '';
   status = '';
 
   constructor(private authService: AuthService) {
@@ -20,7 +22,11 @@ export class SignupComponent implements OnInit {
   onSignup(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.signupUser(email, password, (error) => {
+    this.authService.signupUser(email, password, (response: Response) => {
+      console.log(response);
+      this.status = '';
+      this.success = 'User registration successful';
+    }, (error) => {
       this.status = error.message;
     });
   }
