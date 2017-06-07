@@ -6,7 +6,9 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
+        <ng-template [ngIf]="authService.isAuthenticated()"]>
+           <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
+        </ng-template>
         <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
