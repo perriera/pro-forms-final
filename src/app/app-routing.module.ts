@@ -5,13 +5,15 @@ import { AuthGuard } from './auth/auth-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'recipes', loadChildren: './recipes/recipe.module#RecipesModule',
-    canLoad: [AuthGuard]}
+  {
+    path: 'recipes', loadChildren: './recipes/recipe.module#RecipesModule',
+    canLoad: [ AuthGuard ]
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(appRoutes) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule {
 }
